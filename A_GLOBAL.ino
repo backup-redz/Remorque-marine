@@ -1,6 +1,9 @@
 #include <SD.h>
 #include <SPI.h>
 #include <OneWire.h>
+#include <SoftwareSerial.h>
+
+SoftwareSerial commun (5, 6);
 
 char charac;
 const byte chipSelect = 4;

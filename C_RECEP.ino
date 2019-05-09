@@ -1,4 +1,6 @@
 void recep (char lettre) {
+  Serial.println("On recoit");
+  Serial.println(lettre);
   delay(15);
   switch (lettre) {
     case 'E':
@@ -7,8 +9,8 @@ void recep (char lettre) {
       char localCharac = '\0';
       char str[100];
       byte count = 0;
-      while (Serial.available() > 0 ) {
-        localCharac = Serial.read();
+      while (commun.available() > 0 ) {
+        localCharac = commun.read();
         str[count] = localCharac;
         count++;
         if (count == 98 || localCharac == '$') {
@@ -22,20 +24,22 @@ void recep (char lettre) {
       if (dataFile) {
         dataFile.println(string1);
         dataFile.close();
-        Serial.println("Einfos saved : $");
+        commun.println("Einfos saved : $");
       }
     }
     break;
 
-    case 'I':
+    case 'Q':
     {
       File dataFile = SD.open("data.txt", FILE_READ);
-      Serial.print("Electure de data.txt\n");
+      commun.print("Q");
+      delay(10);
       while (dataFile.available()) {
-        Serial.write(dataFile.read());
+        delay(5);
+        commun.write(dataFile.read());
       }
       dataFile.close();
-      Serial.print("$");
+      commun.print("$");
     }
     break;
   }
