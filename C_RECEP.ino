@@ -1,5 +1,5 @@
 void recep (char lettre) {
-  Serial.println("On recoit");
+  Serial.println("On recoit du commun");
   Serial.println(lettre);
   delay(15);
   switch (lettre) {
@@ -32,13 +32,16 @@ void recep (char lettre) {
     case 'Q':
     {
       File dataFile = SD.open("data.txt", FILE_READ);
+      Serial.println("on envoie Q sur le commun suivi de");
       commun.print("Q");
       delay(10);
       while (dataFile.available()) {
         delay(5);
+        Serial.print(dataFile.peek());
         commun.write(dataFile.read());
       }
       dataFile.close();
+      Serial.println("$");
       commun.print("$");
     }
     break;
