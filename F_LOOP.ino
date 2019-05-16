@@ -4,15 +4,8 @@ void loop() {
     charac = commun.read();
     recep(charac);
   }
-
-  if (getTemperature(&temperatureInterieur, 2, true) != READ_OK) {
-    //commun.println(F("Erreur de lecture du capteur"));
-    return;
-  }
-
-   /* Lit la température ambiante à ~1Hz */
-  if (getTemperature(&temperatureExterieur, 3, true) != READ_OK) {
-    //commun.println(F("Erreur de lecture du capteur"));
-    return;
+  if (Serial.available() > 0) {
+    Serial.write(Serial.peek());
+    commun.write(Serial.read());
   }
 }

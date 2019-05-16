@@ -9,5 +9,4 @@ void setup() {
     }
   }
   //commun.println("Ecard initialized.$");
-  
 }

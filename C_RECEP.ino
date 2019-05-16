@@ -1,6 +1,5 @@
 void recep (char lettre) {
-  Serial.println("On recoit du commun");
-  Serial.println(lettre);
+  Serial.print(lettre);
   delay(15);
   switch (lettre) {
     case 'E':
@@ -43,6 +42,20 @@ void recep (char lettre) {
       dataFile.close();
       Serial.println("$");
       commun.print("$");
+    }
+    break;
+    case 'T':
+    {
+      if (getTemperature(&temperatureInterieur, 2, true) != READ_OK) {
+        Serial.println(F("Erreur de lecture du capteur"));
+        return;
+      }
+      if (getTemperature(&temperatureExterieur, 3, true) != READ_OK) {
+        Serial.println(F("Erreur de lecture du capteur"));
+        return;
+      }
+      Serial.println(temperatureInterieur);
+      Serial.println(temperatureExterieur);
     }
     break;
   }

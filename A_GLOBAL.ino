@@ -3,7 +3,7 @@
 #include <OneWire.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial commun (5, 6);
+SoftwareSerial commun (A4, A5);
 
 char charac;
 const byte chipSelect = 4;
