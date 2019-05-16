@@ -3,10 +3,10 @@
 #include <OneWire.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial commun (A4, A5);
+SoftwareSerial Blt (A5, A4);
 
-char charac;
 const byte chipSelect = 4;
+double positionsGPS[10];
 
 float temperatureInterieur;
 float temperatureExterieur;
@@ -20,5 +20,8 @@ enum DS18B20_RCODES {
 
 // functions prototype
 void recep (char lettre);
+void recepBlt (char lettre); // bluetooth
+
+void debug(String str);
 
 byte getTemperature(float *temperature, byte pinTemp, byte reset_search);

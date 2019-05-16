@@ -1,12 +1,17 @@
 void setup() {
   // put your setup code here, to run once:
-  commun.begin(9600);
+  
   Serial.begin(9600);
+  Blt.begin(9600);
+  Blt.print("slt noe");
   if (!SD.begin(chipSelect)) {
     while (1) {
-      //commun.println("Ecard failed, or not present$");
+      debug("card failed, or not present");
+      if (!SD.begin(chipSelect)) {
+        break;
+      }
       delay(500);
     }
   }
-  //commun.println("Ecard initialized.$");
+  debug("card initialized.");
 }
