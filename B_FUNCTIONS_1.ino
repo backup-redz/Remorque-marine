@@ -21,9 +21,8 @@ String getStringPartByNr(String data, char separator, int index) {
 }
 
 void debug(String str) {
-  Serial.println('B');
-  Serial.println("remorque");
-  Serial.println(str);
-  Serial.print('$');
+  Serial.print('B ');
+  Serial.print("remorque : ");
+  Serial.print(str);
+  Serial.print(' $');
 }
-
