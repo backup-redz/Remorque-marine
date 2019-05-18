@@ -2,22 +2,24 @@ void recepBlt (char lettre) { // bluetooth
   
   delay(10);
   switch (lettre) {
-    case'z':
-    Serial.print('z');
+    case 'z':
+      Serial.print('z');
     break;
-    case's':
-    Serial.print('s');
+    case 's':
+      Serial.print('s');
     break;
-    case'q':
-    Serial.print('q');
+    case 'q':
+      Serial.print('q');
     break;
     case'd':
-    Serial.print('d');
+      Serial.print('d');
     break;
-    case'K':
-    Serial.print('K');
+    case 'K':
+      Serial.print('K');
     break;
-    
+    case 'P':
+      Serial.print('G');
+    break;
     case 'E':
     {
       File dataFile = SD.open("data.txt", FILE_WRITE);
