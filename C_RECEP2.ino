@@ -1,21 +1,23 @@
 void recepBlt (char lettre) { // bluetooth
-  
   delay(10);
   switch (lettre) {
-    case'z':
+    case 'z':
     Serial.print('z');
     break;
-    case's':
+    case 's':
     Serial.print('s');
     break;
-    case'q':
+    case 'q':
     Serial.print('q');
     break;
-    case'd':
+    case 'd':
     Serial.print('d');
     break;
-    case'K':
+    case 'K':
     Serial.print('K');
+    break;
+    case 'P':
+    Serial.print('P');
     break;
     
     case 'E':
@@ -81,6 +83,23 @@ void recepBlt (char lettre) { // bluetooth
         debugPos.concat(String(positionsGPS[i*2+1], 5));
         debug(debugPos);
       }
+    }
+    break;
+    case 'T':
+    {
+      if (getTemperature(&temperatureInterieur, 2, true) != READ_OK) {
+        debug(F("Erreur de lecture du capteur"));
+        return;
+      }
+      if (getTemperature(&temperatureExterieur, 3, true) != READ_OK) {
+        debug(F("Erreur de lecture du capteur"));
+        return;
+      }
+
+      Blt.print("interieur : ");
+      Blt.print(String(temperatureInterieur, 5));
+      Blt.print(", exterieur : ");
+      Blt.print(String(temperatureExterieur, 5));
     }
     break;
     case '+':
