@@ -103,7 +103,7 @@ void recepBlt (char lettre) { // bluetooth
     }
     break;
     case '+':
-    Serial.println("B On recoit ss ok $");
+    //On recoit ss ok 
       while (Blt.read() != 'K') {
         delay(10);
       }

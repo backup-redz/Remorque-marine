@@ -2,10 +2,6 @@ void recep (char lettre) { // commun
   if (lettre == ' ') {
     return;
   }
-  if (lettre != 'B') {
-    debug(String(lettre));
-  }
-  
   delay(15);
   switch (lettre) {
     

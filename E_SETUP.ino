@@ -3,15 +3,15 @@ void setup() {
   
   Serial.begin(9600);
   Blt.begin(9600);
-  Blt.print("slt noe");
+  Blt.print("slt noe ! ");
   if (!SD.begin(chipSelect)) {
     while (1) {
-      debug("card failed, or not present");
+      Blt.print("card failed, or not present");
       if (!SD.begin(chipSelect)) {
         break;
       }
       delay(500);
     }
   }
-  debug("card initialized.");
+  Blt.print("card initialized.");
 }
