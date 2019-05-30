@@ -1,25 +1,25 @@
 void recepBlt (char lettre) { // bluetooth
-  
   delay(10);
   switch (lettre) {
     case 'z':
-      Serial.print('z');
+    Serial.print('z');
     break;
     case 's':
-      Serial.print('s');
+    Serial.print('s');
     break;
     case 'q':
-      Serial.print('q');
+    Serial.print('q');
     break;
-    case'd':
-      Serial.print('d');
+    case 'd':
+    Serial.print('d');
     break;
     case 'K':
-      Serial.print('K');
+    Serial.print('K');
     break;
     case 'P':
-      Serial.print('G');
+    Serial.print('P');
     break;
+    
     case 'E':
     {
       File dataFile = SD.open("data.txt", FILE_WRITE);
@@ -83,6 +83,23 @@ void recepBlt (char lettre) { // bluetooth
         debugPos.concat(String(positionsGPS[i*2+1], 5));
         debug(debugPos);
       }
+    }
+    break;
+    case 'T':
+    {
+      if (getTemperature(&temperatureInterieur, 2, true) != READ_OK) {
+        debug(F("Erreur de lecture du capteur"));
+        return;
+      }
+      if (getTemperature(&temperatureExterieur, 3, true) != READ_OK) {
+        debug(F("Erreur de lecture du capteur"));
+        return;
+      }
+
+      Blt.print("interieur : ");
+      Blt.print(String(temperatureInterieur, 5));
+      Blt.print(", exterieur : ");
+      Blt.print(String(temperatureExterieur, 5));
     }
     break;
     case '+':

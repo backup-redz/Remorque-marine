@@ -1,7 +1,11 @@
 void recep (char lettre) { // commun
+  if (lettre == ' ') {
+    return;
+  }
   if (lettre != 'B') {
     debug(String(lettre));
   }
+  
   delay(15);
   switch (lettre) {
     
@@ -22,9 +26,10 @@ void recep (char lettre) { // commun
   
   case 'B':
     {
-      while (Serial.available() > 0) {
+      while (true) {
         delay(10);
-        if (Serial.read() == '$') {
+        char test = Serial.read();
+        if (test == '$') {
           break;
         }
       }
