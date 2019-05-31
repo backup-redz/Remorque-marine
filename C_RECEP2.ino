@@ -1,6 +1,22 @@
 void recepBlt (char lettre) { // bluetooth
   delay(10);
   switch (lettre) {
+    case 'A': // mode autonome
+      {
+        if (positionsGPS[0] > 1 && positionsGPS[1] > 1) {
+          String order = "A,";
+          order.concat(positionsGPS[0]);
+          order.concat(",");
+          order.concat(positionsGPS[1]);
+          order.concat(",$");
+          Serial.print(order);
+          debug("Mode autonome : succes, ordre envoye");
+        } else {
+          debug("Mode autonome : echec, SVP renvoyer pos GPS cible");
+        }
+          
+      }
+    break;
     case 'z':
     Serial.print('z');
     break;
@@ -49,7 +65,7 @@ void recepBlt (char lettre) { // bluetooth
     case 'Q':
     {
       File dataFile = SD.open("data.txt", FILE_READ);
-      debug("on envoie Q sur le Blt suivi du fichier :");
+      debug("Envoi du fichier en cours");
       Blt.print("Q");
       delay(10);
       while (dataFile.available()) {
