@@ -7,8 +7,6 @@ void loop() {
   Blt.listen();
   while (Blt.available() > 0) {
     char prochain = Blt.read();
-    
     recepBlt(prochain);
   }
-            
 }

@@ -31,8 +31,8 @@ void recepBlt (char lettre) { // bluetooth
       Serial.print('P');
       break;
     case 'W':
-      Blt.print('W');
       pump();
+      Blt.print('W');
       break;
 
     case 'E':
