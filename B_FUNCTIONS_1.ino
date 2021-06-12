@@ -1,27 +1,36 @@
 // splitting a string and return the part nr index split by separator
 String getStringPartByNr(String data, char separator, int index) {
-    int stringData = 0;        //variable to count data part nr 
-    String dataPart = "";      //variable to hole the return text
+  int stringData = 0;        //variable to count data part nr
+  String dataPart = "";      //variable to hole the return text
 
-    for(int i = 0; i<data.length()-1; i++) {    //Walk through the text one letter at a time
-        if(data[i]==separator) {
-            //Count the number of times separator character appears in the text
-            stringData++;
-        } else if(stringData==index) {
-            //get the text when separator is the rignt one
-            dataPart.concat(data[i]);
-        } else if(stringData>index) {
-            //return text and stop if the next separator appears - to save CPU-time
-            return dataPart;
-            break;
-        }
+  for (int i = 0; i < data.length() - 1; i++) { //Walk through the text one letter at a time
+    if (data[i] == separator) {
+      //Count the number of times separator character appears in the text
+      stringData++;
+    } else if (stringData == index) {
+      //get the text when separator is the rignt one
+      dataPart.concat(data[i]);
+    } else if (stringData > index) {
+      //return text and stop if the next separator appears - to save CPU-time
+      return dataPart;
+      break;
     }
-    //return text if this is the last part
-    return dataPart;
+  }
+  //return text if this is the last part
+  return dataPart;
 }
 
 void debug(String str) {
-  Blt.print("B ");
+  Blt.print("U ");
   Blt.print(str);
   Blt.println('$');
+}
+
+void pump() {
+  digitalWrite(electrovanne, HIGH);
+  delay(10000);
+  digitalWrite(pompe, HIGH);
+  delay(60000);
+  digitalWrite(pompe, LOW);
+  digitalWrite(electrovanne, LOW);
 }

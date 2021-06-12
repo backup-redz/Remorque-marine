@@ -1,5 +1,8 @@
 void setup() {
   // put your setup code here, to run once:
+
+  pinMode(electrovanne, OUTPUT);
+  pinMode(pompe, OUTPUT);
   
   Serial.begin(9600);
   Blt.begin(9600);

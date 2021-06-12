@@ -6,7 +6,11 @@
 SoftwareSerial Blt (A5, A4);
 
 const byte chipSelect = 4;
-double positionsGPS[10];
+const byte electrovanne = 7;
+const byte pompe = 6;
+//double positionsGPS[10];
+double targetLat = 0.0;
+double targetLong = 0.0;
 
 float temperatureInterieur;
 float temperatureExterieur;
@@ -25,3 +29,4 @@ void recepBlt (char lettre); // bluetooth
 void debug(String str);
 
 byte getTemperature(float *temperature, byte pinTemp, byte reset_search);
+void pump();
